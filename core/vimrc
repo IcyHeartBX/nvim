@@ -1,0 +1,223 @@
+" 兼容模式
+if &compatible
+    set nocompatible
+endif
+
+" 设置主要配置目录
+let $VIM_PATH=fnamemodify(resolve(expand('<sfile>:p')),':h:h')
+
+
+" 判断运行时目录，是否包含主要配置目录
+if &runtimepath !~# $VIM_PATH
+    set runtimepath ^= $VIM_PATH " 添加路径
+endif
+
+" 启动时执行
+if has('vim_starting')
+    " 全局映射”
+    let g:mapleader="\<space>"
+    let g:maplocalleader=';'
+
+    " 取消如下键位默认设置
+    nnoremap <Space>  <Nop>
+    xnoremap <Space>  <Nop>
+    nnoremap ,        <Nop>
+    xnoremap ,        <Nop>
+    nnoremap ;        <Nop>
+    xnoremap ;        <Nop>
+
+endif
+
+call etc#init()
+call etc#util#source_file('layers/+thinkvim/config.vim')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+" ===========常规设置==============
+" 通用简单配置
+set number
+set relativenumber
+" 不兼容vi
+set nocompatible
+" backspace修复
+set backspace=indent,eol,start
+set mouse=a
+set encoding=utf-8
+" 支持256色
+set t_Co=256
+
+" 打开高亮
+syntax on
+" 识别文件格式
+filetype on
+filetype indent on
+filetype plugin on
+" 缩进
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+" 自动缩进
+set autoindent
+" 设置空白字字
+set list
+set listchars=tab:▸\ ,trail:▫
+" 设置折叠方式
+set foldmethod=marker
+set foldlevel=99
+" 设置显示状态栏
+set laststatus=2
+" 设置自动切换目录
+set autochdir
+" 高亮行
+set cursorline
+" 浅色高亮当前行
+autocmd InsertLeave * se nocul
+autocmd InsertEnter * se cul
+" 设置标尺
+set ruler
+" 设置显示命令
+set showcmd
+" 设置光标滚动到顶部和底部时保持5行距离
+set scrolloff=5
+" 有空格时不自动换行
+set textwidth=0
+" 自动换行
+set wrap
+" 命令模式自动补全
+set wildmenu
+set wildmode=longest:list,full
+" 搜索相关
+" 打开搜索时高亮
+set hlsearch
+" 设置刚打开文件时的搜索高亮
+exec "nohlsearch"
+" 搜索时变搜索边高亮跳转
+set incsearch
+" 搜索时忽略大小写
+set ignorecase
+" 当有大写字母时，仍然大小写敏感
+set smartcase
+" 自动匹配括号
+set showmatch
+" 共享剪切面板
+set clipboard+=unnamed
+
+
+
+" ===========键位映射==============
+let mapleader="\<space>"
+let g:maplocalleader=";"
+nnoremap <LEADER>ev :vsplit $MYVIMRC<CR>
+nnoremap <LEADER>sv :source $MYVIMRC<CR>
+" 引号快速插入与删除
+nnoremap <LEADER>w"  bi"<esc>ea"<esc>
+nnoremap <LEADER>w'  bi'<esc>ea'<esc>
+nnoremap <LEADER>l"  ^i"<esc>g_a"<esc>
+nnoremap <LEADER>l'  ^i'<esc>g_a"<esc>
+nnoremap <LEADER>d" ebF"xf"x
+nnoremap <LEADER>d' ebF'xf'x
+vnoremap w" xa""<esc>hpl
+vnoremap w' xa''<esc>hpl
+" 分屏
+" 分屏的快捷键
+nnoremap <LEADER>sl :set splitright<CR>:vsplit<CR>
+nnoremap <LEADER>sh :set nosplitright<CR>:vsplit<CR>
+nnoremap <LEADER>sj :set splitbelow<CR>:split<CR>
+nnoremap <LEADER>sk :set nosplitbelow<CR>:split<CR>
+" 分屏后光标的切换
+"光标移至右窗口
+nnoremap <C-l> <C-w>l
+"光标移至上窗口
+nnoremap <C-k> <C-w>k
+"光标移至下窗口
+nnoremap <C-j> <C-w>j
+"光标移至左窗口
+nnoremap <C-h> <C-w>h
+
+"窗口上移
+nnoremap <up> :res +5<CR>
+"窗口下移
+nnoremap <down> :res -5<CR>
+"窗口左移
+nnoremap <left> :vertical resize-5<CR>
+"窗口右移
+nnoremap <right> :vertical resize+5<CR>
+
+
+" 标签
+nnoremap <LEADER>te :tabe<CR>
+nnoremap <LEADER>th :-tabnext<CR>
+nnoremap <LEADER>tl :+tabnext<CR>
+
+" ==========特殊设置===========
+" 光标的位置回到上次的地方
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
+" 光标的样式
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+" 自动插入文件头
+" 新建.c,.h,.sh,.java文件，自动插入文件头
+autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
+function! SetTitle()
+    "如果文件类型为.sh文件
+    if &filetype == 'sh'
+        call setline(1,"\#########################################################################")
+        call append(line("."), "\# File Name: ".expand("%"))
+        call append(line(".")+1, "\# Author: pix")
+        call append(line(".")+2, "\# mail: tpxsky@163.com")
+        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+        call append(line(".")+4, "\#########################################################################")
+        call append(line(".")+5, "\#!/bin/bash")
+        call append(line(".")+6, "")
+    else
+        call setline(1, "/*************************************************************************")
+        call append(line("."), "    > File Name: ".expand("%"))
+        call append(line(".")+1, "    > Author: pix")
+        call append(line(".")+2, "    > Mail: tpxsky@163.com ")
+        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
+        call append(line(".")+4, " ************************************************************************/")
+        call append(line(".")+5, "")
+    endif
+    if &filetype == 'cpp'
+        call append(line(".")+6, "#include<iostream>")
+        call append(line(".")+7, "using namespace std;")
+        call append(line(".")+8, "")
+    endif
+    if &filetype == 'c'
+        call append(line(".")+6, "#include<stdio.h>")
+        call append(line(".")+7, "")
+    endif
+    "新建文件后，自动定位到文件末尾
+    autocmd BufNewFile * normal G
+endfunc
+
+
+
