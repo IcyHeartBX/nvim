@@ -31,10 +31,12 @@ function! etc#util#source_file(path,...) abort
             call delete(tempfile)
         endif
     endtry
+    echo "etc#util#Source_file(),end..."
 endfunction
 
 
 function! etc#util#load_config(filename) abort
+	echo "etc#util#load_config()".a:filename
 	" Parse YAML/JSON config file
 	if a:filename =~# '\.json$'
 		" Parse JSON with built-in json_decode
@@ -45,12 +47,14 @@ function! etc#util#load_config(filename) abort
 		return etc#util#load_yaml(a:filename)
 	endif
 	call etc#util#error('Unknown config file format ' . a:filename)
+	echo "etc#util#load_config(),end..."
 	return ''
 endfunction
 
 let g:yaml2json_method = ''
 
 function! etc#util#load_yaml(filename) abort
+	echo "etc#util#load_yaml(),filename:".a:filename
 	if empty(g:yaml2json_method)
 		let g:yaml2json_method = etc#util#_find_yaml2json_method()
 	endif
@@ -80,6 +84,7 @@ function! etc#util#load_yaml(filename) abort
 endfunction
 
 function! etc#util#_find_yaml2json_method() abort
+	echo "etc#util#_find_yaml2json_method()"
 	if exists('*json_decode')
 		" First, try to decode YAML using a CLI tool named yaml2json, there's many
 		if executable('yaml2json') && etc#util#_test_yaml2json()
@@ -97,4 +102,33 @@ function! etc#util#_find_yaml2json_method() abort
 		call etc#util#error('Unable to find a proper YAML parsing utility')
 	endif
 	call etc#util#error('Please upgrade to neovim +v0.1.4 or vim: +v7.4.1304')
+	echo "etc#util#_find_yaml2json_method(),end..."
+endfunction
+
+function! etc#util#_test_yaml2json() abort
+	echo "etc#util#_test_yaml2json()"
+	" Test yaml2json capabilities
+	try
+		let result = system('yaml2json', "---\ntest: 1")
+		if v:shell_error != 0
+			return 0
+		endif
+		let result = json_decode(result)
+		return result.test
+	catch
+	endtry
+	echo "etc#util#_test_yaml2json(),end..."
+	return 0
+endfunction
+
+function! etc#util#_test_ruby_yaml() abort
+	" Test Ruby YAML capabilities
+	call system("ruby -e 'require \"json\"; require \"yaml\"'")
+	return (v:shell_error == 0) ? 1 : 0
+endfunction
+
+function! etc#util#_test_python_yaml() abort
+	" Test Python YAML capabilities
+	call system("python -c 'import sys,yaml,json'")
+	return (v:shell_error == 0) ? 1 : 0
 endfunction

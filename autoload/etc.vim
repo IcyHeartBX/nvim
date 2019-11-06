@@ -55,6 +55,7 @@ function! etc#_parse_config_files(config_paths) abort
         for l:cfg_file in a:config_paths
             let l:merged = extend(l:merged, etc#util#load_config(l:cfg_file))
         endfor
+	echo "-----------------------------------"
     catch /.*/
         call etc#util#error(
                     \ 'Unable to read configuration files at '.string(a:config_paths))
