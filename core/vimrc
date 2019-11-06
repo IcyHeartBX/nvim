@@ -12,6 +12,8 @@ if &runtimepath !~# $VIM_PATH
     set runtimepath ^= $VIM_PATH " 添加路径
 endif
 
+let $DATA_PATH= g:etc#cache_path
+
 " 启动时执行
 if has('vim_starting')
     " 全局映射”
@@ -30,6 +32,10 @@ endif
 
 call etc#init()
 call etc#util#source_file('layers/+thinkvim/config.vim')
+call etc#util#source_file('core/general.vim')
+call etc#util#source_file('core/filetype.vim')
+call etc#util#source_file('core/mappings.vim')
+
 
 
 
