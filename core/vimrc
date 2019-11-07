@@ -66,17 +66,13 @@ call etc#util#source_file('core/mappings.vim')
 
 
 " ===========常规设置==============
-" 通用简单配置
-set number
-set relativenumber
-" 不兼容vi
-set nocompatible
-" backspace修复
-set backspace=indent,eol,start
 set mouse=a
-set encoding=utf-8
 " 支持256色
 set t_Co=256
+" Enable true color
+if has('termguicolors')
+    set termguicolors
+endif
 
 " 打开高亮
 syntax on
@@ -84,28 +80,16 @@ syntax on
 filetype on
 filetype indent on
 filetype plugin on
-" 缩进
-set expandtab
-set shiftwidth=4
-set tabstop=4
-set softtabstop=4
-" 自动缩进
-set autoindent
-" 设置空白字字
-set list
-set listchars=tab:▸\ ,trail:▫
 " 设置折叠方式
 set foldmethod=marker
 set foldlevel=99
-" 设置显示状态栏
-set laststatus=2
 " 设置自动切换目录
 set autochdir
 " 高亮行
 set cursorline
 " 浅色高亮当前行
-autocmd InsertLeave * se nocul
-autocmd InsertEnter * se cul
+" autocmd InsertLeave * se nocul
+" autocmd InsertEnter * se cul
 " 设置标尺
 set ruler
 " 设置显示命令
@@ -119,21 +103,7 @@ set wrap
 " 命令模式自动补全
 set wildmenu
 set wildmode=longest:list,full
-" 搜索相关
-" 打开搜索时高亮
-set hlsearch
-" 设置刚打开文件时的搜索高亮
-exec "nohlsearch"
-" 搜索时变搜索边高亮跳转
-set incsearch
-" 搜索时忽略大小写
-set ignorecase
-" 当有大写字母时，仍然大小写敏感
-set smartcase
-" 自动匹配括号
-set showmatch
-" 共享剪切面板
-set clipboard+=unnamed
+
 
 
 

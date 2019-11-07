@@ -1,0 +1,38 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+<S-TAB>	layers/+completion/coc/config.vim	/^inoremap <expr><S-TAB> pumvisible() ? "\\<C-p>" : "\\<C-h>"$/;"	m
+<TAB>	layers/+completion/coc/config.vim	/^inoremap <silent><expr> <TAB>$/;"	m
+<cr>	layers/+completion/coc/config.vim	/^inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"$/;"	m
+BuffetSetCustomColors	layers/+ui/buffet/config.vim	/^function! g:BuffetSetCustomColors()$/;"	f
+MyAutoCmd	core/general.vim	/^augroup MyAutoCmd$/;"	a
+MyAutoCmd	layers/+completion/coc/config.vim	/^augroup MyAutoCmd$/;"	a
+check_back_space	layers/+completion/coc/config.vim	/^function! s:check_back_space() abort$/;"	f
+check_custom_settings	autoload/etc.vim	/^function! s:check_custom_settings(filename)abort$/;"	f
+etc#_parse_config_files	autoload/etc.vim	/^function! etc#_parse_config_files(config_paths) abort$/;"	f
+etc#init	autoload/etc.vim	/^function! etc#init() abort$/;"	f
+etc#providers#dein#_init	autoload/etc/providers/dein.vim	/^function! etc#providers#dein#_init(config_paths) abort$/;"	f
+etc#util#_find_yaml2json_method	autoload/etc/util.vim	/^function! etc#util#_find_yaml2json_method() abort$/;"	f
+etc#util#_test_python_yaml	autoload/etc/util.vim	/^function! etc#util#_test_python_yaml() abort$/;"	f
+etc#util#_test_ruby_yaml	autoload/etc/util.vim	/^function! etc#util#_test_ruby_yaml() abort$/;"	f
+etc#util#_test_yaml2json	autoload/etc/util.vim	/^function! etc#util#_test_yaml2json() abort$/;"	f
+etc#util#error	autoload/etc/util.vim	/^function! etc#util#error(msg) abort$/;"	f
+etc#util#load_config	autoload/etc/util.vim	/^function! etc#util#load_config(filename) abort$/;"	f
+etc#util#load_yaml	autoload/etc/util.vim	/^function! etc#util#load_yaml(filename) abort$/;"	f
+etc#util#source_file	autoload/etc/util.vim	/^function! etc#util#source_file(path,...) abort$/;"	f
+etc#util#str2list	autoload/etc/util.vim	/^function! etc#util#str2list(expr) abort$/;"	f
+g:buffet_tab_icon	layers/+ui/buffet/config.vim	/^let g:buffet_tab_icon = "\\uf00a"$/;"	v
+g:clipboard	core/general.vim	/^    let g:clipboard = {$/;"	v
+g:coc_global_extensions	layers/+completion/coc/config.vim	/^let g:coc_global_extensions =['coc-html','coc-css','coc-snippets','coc-prettier','coc-eslint','coc-emmet','coc-tsserver','coc-pairs','coc-json','coc-python','coc-imselect','coc-highlight','coc-git','coc-emoji','coc-lists','coc-post','coc-stylelint','coc-yaml','coc-template','coc-tabnine','coc-marketplace','coc-gitignore','coc-yank','coc-explorer','coc-go']$/;"	v
+g:coc_snippet_next	layers/+completion/coc/config.vim	/^let g:coc_snippet_next = '<TAB>'$/;"	v
+g:coc_snippet_prev	layers/+completion/coc/config.vim	/^let g:coc_snippet_prev = '<S-TAB>'$/;"	v
+g:coc_status_error_sign	layers/+completion/coc/config.vim	/^let g:coc_status_error_sign = '•'$/;"	v
+g:coc_status_warning_sign	layers/+completion/coc/config.vim	/^let g:coc_status_warning_sign = '•'$/;"	v
+g:etc#cache_path	autoload/etc.vim	/^let g:etc#cache_path =$/;"	v
+g:etc#config_paths	autoload/etc.vim	/^let g:etc#config_paths = get(g:,'etc#config_paths',[$/;"	v
+g:etc#package_manager	autoload/etc.vim	/^let g:etc#package_manager = get(g:,'etc#package_manager','dein')$/;"	v
+g:etc#vim_path	autoload/etc.vim	/^let g:etc#vim_path =$/;"	v
+g:yaml2json_method	autoload/etc/util.vim	/^let g:yaml2json_method = ''$/;"	v
