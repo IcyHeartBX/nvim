@@ -4,6 +4,17 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+<C-Q>	core/mappings.vim	/^imap <C-Q> <esc>:wq<CR>$/;"	m
+<C-S>	core/mappings.vim	/^imap <C-S> <esc>:w<CR>$/;"	m
+<C-a>	core/mappings.vim	/^cnoremap <C-a> <Home>$/;"	m
+<C-b>	core/mappings.vim	/^cnoremap <C-b> <Left>$/;"	m
+<C-d>	core/mappings.vim	/^cnoremap <C-d> <Del>$/;"	m
+<C-e>	core/mappings.vim	/^cnoremap <C-e> <End>$/;"	m
+<C-f>	core/mappings.vim	/^cnoremap <C-f> <Right>$/;"	m
+<C-h>	core/mappings.vim	/^cnoremap <C-h> <BS>$/;"	m
+<C-p>	core/mappings.vim	/^cnoremap <C-p> <Up>$/;"	m
+<C-t>	core/mappings.vim	/^cnoremap <C-t> <C-R>=expand("%:p:h") . "\/" <CR>$/;"	m
+<Leader>w	core/mappings.vim	/^noremap <Leader>w :w<CR>$/;"	m
 <S-TAB>	layers/+completion/coc/config.vim	/^inoremap <expr><S-TAB> pumvisible() ? "\\<C-p>" : "\\<C-h>"$/;"	m
 <TAB>	layers/+completion/coc/config.vim	/^inoremap <silent><expr> <TAB>$/;"	m
 <cr>	layers/+completion/coc/config.vim	/^inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"$/;"	m

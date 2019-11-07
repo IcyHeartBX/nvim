@@ -134,7 +134,7 @@ endif
 
 " If sudo, disable vim swap/backup/undo/shada/viminfo writing
 if $SUDO_USER !=# '' && $USER !=# $SUDO_USER
-            \ && $HOME !=# expand'(~.$USER')
+            \ && $HOME !=# expand('~.$USER')
             \ && $HOME ==# expand('~'.$SUDO_USER)
 
     set noswapfile
@@ -164,7 +164,7 @@ augroup MyAutoCmd
 augroup END
 
 " 折叠
-if has'(folding')
+if has('folding')
     set foldenable
     set foldmethod=syntax
     set foldlevelstart=99
