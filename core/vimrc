@@ -107,50 +107,8 @@ set wildmode=longest:list,full
 
 
 
-" ===========键位映射==============
-let mapleader="\<space>"
-let g:maplocalleader=";"
-nnoremap <LEADER>ev :vsplit $MYVIMRC<CR>
-nnoremap <LEADER>sv :source $MYVIMRC<CR>
-" 引号快速插入与删除
-nnoremap <LEADER>w"  bi"<esc>ea"<esc>
-nnoremap <LEADER>w'  bi'<esc>ea'<esc>
-nnoremap <LEADER>l"  ^i"<esc>g_a"<esc>
-nnoremap <LEADER>l'  ^i'<esc>g_a"<esc>
-nnoremap <LEADER>d" ebF"xf"x
-nnoremap <LEADER>d' ebF'xf'x
-vnoremap w" xa""<esc>hpl
-vnoremap w' xa''<esc>hpl
-" 分屏
-" 分屏的快捷键
-nnoremap <LEADER>sl :set splitright<CR>:vsplit<CR>
-nnoremap <LEADER>sh :set nosplitright<CR>:vsplit<CR>
-nnoremap <LEADER>sj :set splitbelow<CR>:split<CR>
-nnoremap <LEADER>sk :set nosplitbelow<CR>:split<CR>
-" 分屏后光标的切换
-"光标移至右窗口
-nnoremap <C-l> <C-w>l
-"光标移至上窗口
-nnoremap <C-k> <C-w>k
-"光标移至下窗口
-nnoremap <C-j> <C-w>j
-"光标移至左窗口
-nnoremap <C-h> <C-w>h
-
-"窗口上移
-nnoremap <up> :res +5<CR>
-"窗口下移
-nnoremap <down> :res -5<CR>
-"窗口左移
-nnoremap <left> :vertical resize-5<CR>
-"窗口右移
-nnoremap <right> :vertical resize+5<CR>
 
 
-" 标签
-nnoremap <LEADER>te :tabe<CR>
-nnoremap <LEADER>th :-tabnext<CR>
-nnoremap <LEADER>tl :+tabnext<CR>
 
 " ==========特殊设置===========
 " 光标的位置回到上次的地方
