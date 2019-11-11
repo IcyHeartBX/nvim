@@ -27,6 +27,7 @@ function! etc#providers#dein#_init(config_paths) abort
                         \ fnamemodify(s:dein_dir, ':p') , '/$', '', '')
         endif
     endif
+    echo "etc#providers#dein#_init()================================"
 
     " Initialize dein.vim (package manager)
     if dein#load_state(l:cache_path)
@@ -40,6 +41,8 @@ function! etc#providers#dein#_init(config_paths) abort
         for plugin in l:rc
             call dein#add(plugin['repo'], extend(plugin, {}, 'keep'))
         endfor
+        echo "dein plugin:"
+        echo plugin
 
         " Add any local ./dev plugins
         if isdirectory(g:etc#vim_path.'/dev')

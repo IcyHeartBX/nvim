@@ -4,25 +4,35 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+,	layers/+thinkvim/config.vim	/^    inoremap <expr> , smartchr#one_of(',', ',')$/;"	m
 ,<Space>	core/mappings.vim	/^nnoremap <silent> ,<Space> :<C-u>silent! keeppatterns %substitute\/\\s\\+$\/\/e<CR>$/;"	m
+-	layers/+thinkvim/config.vim	/^	nmap -         <Plug>(choosewin)$/;"	m
 <C-O>	core/mappings.vim	/^inoremap <C-O> <Esc>o$/;"	m
 <C-Q>	core/mappings.vim	/^imap <C-Q> <esc>:wq<CR>$/;"	m
 <C-S>	core/mappings.vim	/^imap <C-S> <esc>:w<CR>$/;"	m
 <C-a>	core/mappings.vim	/^cnoremap <C-a> <Home>$/;"	m
 <C-b>	core/mappings.vim	/^cnoremap <C-b> <Left>$/;"	m
 <C-b>	core/mappings.vim	/^noremap <expr> <C-b> max([winheight(0) - 2, 1])$/;"	m
+<C-b>	layers/+thinkvim/config.vim	/^		nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\\<C-b>"$/;"	m
+<C-b>	layers/+thinkvim/config.vim	/^    nnoremap <silent> <C-b> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -4)<CR>$/;"	m
+<C-c>	layers/+thinkvim/config.vim	/^        nmap <silent> <C-c> <Plug>(coc-cursors-position)$/;"	m
 <C-d>	core/mappings.vim	/^cnoremap <C-d> <Del>$/;"	m
+<C-d>	layers/+thinkvim/config.vim	/^    nnoremap <silent> <C-d> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 2)<CR>$/;"	m
 <C-e>	core/mappings.vim	/^cnoremap <C-e> <End>$/;"	m
 <C-e>	core/mappings.vim	/^noremap <expr> <C-e> (line("w$") >= line('$') ? "j" : "3\\<C-e>")$/;"	m
 <C-f>	core/mappings.vim	/^cnoremap <C-f> <Right>$/;"	m
 <C-f>	core/mappings.vim	/^noremap <expr> <C-f> max([winheight(0) - 2, 1])$/;"	m
+<C-f>	layers/+thinkvim/config.vim	/^		nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\\<C-f>"$/;"	m
+<C-f>	layers/+thinkvim/config.vim	/^    nnoremap <silent> <C-f> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * 4)<CR>$/;"	m
 <C-h>	core/mappings.vim	/^cnoremap <C-h> <BS>$/;"	m
 <C-h>	core/mappings.vim	/^nnoremap <C-h> <C-w>h$/;"	m
 <C-j>	core/mappings.vim	/^nnoremap <C-j> <C-w>j$/;"	m
 <C-k>	core/mappings.vim	/^nnoremap <C-k> <C-w>k$/;"	m
 <C-l>	core/mappings.vim	/^nnoremap <C-l> <C-w>l$/;"	m
+<C-m>	layers/+thinkvim/config.vim	/^        nmap <expr> <silent> <C-m> <SID>select_current_word()$/;"	m
 <C-p>	core/mappings.vim	/^cnoremap <C-p> <Up>$/;"	m
 <C-t>	core/mappings.vim	/^cnoremap <C-t> <C-R>=expand("%:p:h") . "\/" <CR>$/;"	m
+<C-u>	layers/+thinkvim/config.vim	/^    nnoremap <silent> <C-u> :call comfortable_motion#flick(g:comfortable_motion_impulse_multiplier * winheight(0) * -2)<CR>$/;"	m
 <C-x>	core/mappings.vim	/^nnoremap  <C-x> :bd<CR>$/;"	m
 <C-y>	core/mappings.vim	/^noremap <expr> <C-y> (line("w0") <= 1         ? "k" : "3\\<C-y>")$/;"	m
 <LEADER>d"	core/mappings.vim	/^nnoremap <LEADER>d" ebF"xf"x$/;"	m
@@ -42,20 +52,87 @@
 <LEADER>tn	core/mappings.vim	/^nnoremap <LEADER>tn :tabnew<CR>$/;"	m
 <LEADER>w"	core/mappings.vim	/^nnoremap <LEADER>w"  bi"<esc>ea"<esc>$/;"	m
 <LEADER>w'	core/mappings.vim	/^nnoremap <LEADER>w'  bi'<esc>ea'<esc>$/;"	m
+<Leader>-	layers/+thinkvim/config.vim	/^	nmap <Leader>- :<C-u>ChooseWinSwapStay<CR>$/;"	m
+<Leader><Leader>b	layers/+thinkvim/config.vim	/^	    nmap <Leader><Leader>b <Plug>(easymotion-b)$/;"	m
+<Leader><Leader>f	layers/+thinkvim/config.vim	/^	    nmap <Leader><Leader>f <Plug>(easymotion-f)$/;"	m
+<Leader><Leader>w	layers/+thinkvim/config.vim	/^        nmap <Leader><Leader>w <Plug>(easymotion-w)$/;"	m
+<Leader>F	layers/+thinkvim/config.vim	/^         nnoremap <silent> <Leader>F$/;"	m
+<Leader>G	layers/+thinkvim/config.vim	/^	nnoremap <Leader>G :Goyo<CR>$/;"	m
+<Leader>e	layers/+thinkvim/config.vim	/^        nnoremap <silent> <Leader>e$/;"	m
+<Leader>gB	layers/+thinkvim/config.vim	/^	nnoremap <silent> <Leader>gB :Gbrowse<CR>$/;"	m
+<Leader>gS	layers/+thinkvim/config.vim	/^	nnoremap <silent> <Leader>gS :Gstatus<CR>$/;"	m
+<Leader>gb	layers/+thinkvim/config.vim	/^	nnoremap <silent> <Leader>gb :Gblame<CR>$/;"	m
+<Leader>gc	layers/+thinkvim/config.vim	/^	nnoremap <silent> <Leader>gc :Gcommit<CR>$/;"	m
+<Leader>gd	layers/+thinkvim/config.vim	/^	nnoremap <silent> <Leader>gd :Gdiff<CR>$/;"	m
+<Leader>gh	layers/+thinkvim/config.vim	/^	    nnoremap <silent> <Leader>gh :<C-u>Denite gitbranch<CR>$/;"	m
+<Leader>gl	layers/+thinkvim/config.vim	/^        nnoremap <silent> <Leader>gl :<C-u>Denite gitlog:all<CR>$/;"	m
+<Leader>gp	layers/+thinkvim/config.vim	/^	nnoremap <silent><Leader>gp :Gina push<CR>$/;"	m
 <Leader>w	core/mappings.vim	/^noremap <Leader>w :w<CR>$/;"	m
+<LocalLeader>gC	layers/+thinkvim/config.vim	/^	 nnoremap <silent> <LocalLeader>gC :GoCallers<CR>$/;"	m
+<LocalLeader>gc	layers/+thinkvim/config.vim	/^	 nnoremap <silent> <LocalLeader>gc :GoCallees<CR>$/;"	m
+<LocalLeader>gd	layers/+thinkvim/config.vim	/^	 nnoremap <silent> <LocalLeader>gd :GoDescribe<CR>$/;"	m
+<LocalLeader>gi	layers/+thinkvim/config.vim	/^	 nnoremap <silent> <LocalLeader>gi :GoImpl<CR>$/;"	m
+<LocalLeader>gs	layers/+thinkvim/config.vim	/^	 nnoremap <silent> <LocalLeader>gs :GoCallstack<CR>$/;"	m
+<LocalLeader>m	layers/+thinkvim/config.vim	/^        nnoremap <silent><LocalLeader>m :<C-u>Denite menu<CR>$/;"	m
 <S-TAB>	layers/+completion/coc/config.vim	/^inoremap <expr><S-TAB> pumvisible() ? "\\<C-p>" : "\\<C-h>"$/;"	m
 <TAB>	layers/+completion/coc/config.vim	/^inoremap <silent><expr> <TAB>$/;"	m
+<c-space>	layers/+thinkvim/config.vim	/^        inoremap <silent><expr> <c-space> coc#refresh()$/;"	m
 <cr>	layers/+completion/coc/config.vim	/^inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm() : "\\<C-g>u\\<CR>\\<c-r>=coc#on_enter()\\<CR>"$/;"	m
 <down>	core/mappings.vim	/^nnoremap <down> :res -5<CR>$/;"	m
+<leader>	layers/+thinkvim/config.vim	/^		nnoremap <silent> <leader>      :<c-u>WhichKey '<Space>'<CR>$/;"	m
+<leader>ac	layers/+thinkvim/config.vim	/^        nmap <leader>ac  <Plug>(coc-codeaction)$/;"	m
+<leader>bb	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>bb :Buffers<CR>$/;"	m
+<leader>ca	layers/+thinkvim/config.vim	/^        nmap <leader>ca  <Plug>(coc-codeaction-selected)$/;"	m
+<leader>cc	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cc  :<C-u>CocList commands<cr>$/;"	m
+<leader>cd	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cd  :<C-u>CocList diagnostics<cr>$/;"	m
+<leader>ce	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>ce  :<C-u>CocList extensions<cr>$/;"	m
+<leader>cf	layers/+thinkvim/config.vim	/^        nmap <leader>cf  <Plug>(coc-format-selected)$/;"	m
+<leader>cf	layers/+thinkvim/config.vim	/^        vmap <leader>cf  <Plug>(coc-format-selected)$/;"	m
+<leader>cg	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cg  :<C-u>CocList --normal gstatus<CR>$/;"	m
+<leader>cj	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cj  :<C-u>CocNext<CR>$/;"	m
+<leader>ck	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>ck  :<C-u>CocPrev<CR>$/;"	m
+<leader>cm	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cm ::CocSearch -w $/;"	m
+<leader>cn	layers/+thinkvim/config.vim	/^        nmap <leader>cn <Plug>(coc-rename)$/;"	m
+<leader>co	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>co  :<C-u>CocList outline<cr>$/;"	m
+<leader>cr	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cr  :<C-u>CocListResume<CR>$/;"	m
+<leader>cs	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cs  :<C-u>CocList -I symbols<cr>$/;"	m
+<leader>cw	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>cw ::CocSearch  $/;"	m
+<leader>d	layers/+thinkvim/config.vim	/^        nnoremap <silent><leader>d :Dash<CR>$/;"	m
+<leader>fc	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>fc :Colors<CR>$/;"	m
+<leader>ff	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>ff :call Fzf_dev()<CR>$/;"	m
+<leader>fr	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>fr :Rg<CR>$/;"	m
+<leader>fv	layers/+thinkvim/config.vim	/^        nnoremap <silent><leader>fv     :Vista finder coc<CR>$/;"	m
+<leader>fw	layers/+thinkvim/config.vim	/^        nnoremap <silent> <leader>fw :Rg <C-R><C-W><CR>$/;"	m
+<leader>j	layers/+thinkvim/config.vim	/^        noremap <silent> <leader>j :execute 'CocCommand explorer' .$/;"	m
+<leader>m	layers/+thinkvim/config.vim	/^    nnoremap <silent> <leader>m :MundoToggle<CR>$/;"	m
+<leader>qf	layers/+thinkvim/config.vim	/^        nmap <leader>qf  <Plug>(coc-fix-current)$/;"	m
+<leader>s	layers/+thinkvim/config.vim	/^    nnoremap <silent> <leader>s :Startify<CR>$/;"	m
+<leader>x	layers/+thinkvim/config.vim	/^        nmap <leader>x  <Plug>(coc-cursors-operator)$/;"	m
 <left>	core/mappings.vim	/^nnoremap <left> :vertical resize-5<CR>$/;"	m
+<localleader>	layers/+thinkvim/config.vim	/^		nnoremap <silent> <localleader> :<c-u>WhichKey  ';'<CR>$/;"	m
+<localleader>r	layers/+thinkvim/config.vim	/^    nnoremap <silent> <localleader>r :QuickRun<CR>$/;"	m
+<localleader>v	layers/+thinkvim/config.vim	/^        nnoremap <silent><localleader>v :Vista!!<CR>$/;"	m
 <right>	core/mappings.vim	/^nnoremap <right> :vertical resize+5<CR>$/;"	m
 <up>	core/mappings.vim	/^nnoremap <up> :res +5<CR>$/;"	m
 BuffetSetCustomColors	layers/+ui/buffet/config.vim	/^function! g:BuffetSetCustomColors()$/;"	f
+InitCaw	layers/+thinkvim/config.vim	/^    function! InitCaw() abort$/;"	f
+K	layers/+thinkvim/config.vim	/^        nnoremap <silent> K :call CocActionAsync('doHover')<CR>$/;"	m
 MyAutoCmd	core/general.vim	/^augroup MyAutoCmd$/;"	a
 MyAutoCmd	layers/+completion/coc/config.vim	/^augroup MyAutoCmd$/;"	a
 Y	core/mappings.vim	/^nnoremap Y y\$$/;"	m
+[	layers/+thinkvim/config.vim	/^		nnoremap <silent>[              :<c-u>WhichKey  '['<CR>$/;"	m
+[a	layers/+thinkvim/config.vim	/^        nmap [a <Plug>(ale_next_wrap)$/;"	m
 [b	core/mappings.vim	/^nnoremap  [b :bn<CR>$/;"	m
+[c	layers/+thinkvim/config.vim	/^        nmap <silent> [c <Plug>(coc-diagnostic-next)$/;"	m
+[g	layers/+thinkvim/config.vim	/^        nmap [g <Plug>(coc-git-prevchunk)$/;"	m
+]	layers/+thinkvim/config.vim	/^		nnoremap <silent>]              :<c-u>WhichKey  ']'<CR>$/;"	m
+]a	layers/+thinkvim/config.vim	/^        nmap ]a <Plug>(ale_previous_wrap)$/;"	m
 ]b	core/mappings.vim	/^nnoremap  ]b :bp<CR>$/;"	m
+]c	layers/+thinkvim/config.vim	/^        nmap <silent> ]c <Plug>(coc-diagnostic-prev)$/;"	m
+]g	layers/+thinkvim/config.vim	/^        nmap ]g <Plug>(coc-git-nextchunk)$/;"	m
+ab	layers/+thinkvim/config.vim	/^	omap <silent> ab <Plug>(textobj-multiblock-a)$/;"	m
+ab	layers/+thinkvim/config.vim	/^     omap ab <Plug>(textobj-sandwich-auto-a)$/;"	m
+as	layers/+thinkvim/config.vim	/^     omap as <Plug>(textobj-sandwich-query-a)$/;"	m
 check_back_space	layers/+completion/coc/config.vim	/^function! s:check_back_space() abort$/;"	f
 check_custom_settings	autoload/etc.vim	/^function! s:check_custom_settings(filename)abort$/;"	f
 etc#_parse_config_files	autoload/etc.vim	/^function! etc#_parse_config_files(config_paths) abort$/;"	f
@@ -81,11 +158,43 @@ g:etc#cache_path	autoload/etc.vim	/^let g:etc#cache_path =$/;"	v
 g:etc#config_paths	autoload/etc.vim	/^let g:etc#config_paths = get(g:,'etc#config_paths',[$/;"	v
 g:etc#package_manager	autoload/etc.vim	/^let g:etc#package_manager = get(g:,'etc#package_manager','dein')$/;"	v
 g:etc#vim_path	autoload/etc.vim	/^let g:etc#vim_path =$/;"	v
+g:splitjoin_join_mapping	layers/+thinkvim/config.vim	/^        let g:splitjoin_join_mapping = ''$/;"	v
+g:splitjoin_split_mapping	layers/+thinkvim/config.vim	/^        let g:splitjoin_split_mapping = ''$/;"	v
 g:yaml2json_method	autoload/etc/util.vim	/^let g:yaml2json_method = ''$/;"	v
+ga	layers/+thinkvim/config.vim	/^    nmap ga <Plug>(EasyAlign)$/;"	m
+gd	layers/+thinkvim/config.vim	/^        nmap <silent> gd <Plug>(coc-definition)$/;"	m
+gi	layers/+thinkvim/config.vim	/^        nmap <silent> gi <Plug>(coc-implementation)$/;"	m
+gm	layers/+thinkvim/config.vim	/^        nmap gm <Plug>(coc-git-commit)$/;"	m
+gr	layers/+thinkvim/config.vim	/^        nmap <silent> gr <Plug>(coc-references)$/;"	m
+gs	layers/+thinkvim/config.vim	/^        nmap gs <Plug>(coc-git-chunkinfo)$/;"	m
+gy	layers/+thinkvim/config.vim	/^        nmap <silent> gy <Plug>(coc-type-definition)$/;"	m
+ib	layers/+thinkvim/config.vim	/^	omap <silent> ib <Plug>(textobj-multiblock-i)$/;"	m
+ib	layers/+thinkvim/config.vim	/^     omap ib <Plug>(textobj-sandwich-auto-i)$/;"	m
+is	layers/+thinkvim/config.vim	/^     omap is <Plug>(textobj-sandwich-query-i)$/;"	m
 j	core/mappings.vim	/^nnoremap j gj$/;"	m
 j	core/mappings.vim	/^vnoremap j gj$/;"	m
+j	layers/+thinkvim/config.vim	/^	nmap <silent>j <Plug>(accelerated_jk_gj)$/;"	m
 k	core/mappings.vim	/^nnoremap k gk$/;"	m
 k	core/mappings.vim	/^vnoremap k gk$/;"	m
+k	layers/+thinkvim/config.vim	/^	nmap <silent>k <Plug>(accelerated_jk_gk)$/;"	m
+mg	layers/+thinkvim/config.vim	/^	nnoremap <silent> mg :Magit<CR>$/;"	m
+my_denite_decls	layers/+thinkvim/config.vim	/^        function! s:my_denite_decls(filetype) abort$/;"	f
+my_denite_file_rec_goroot	layers/+thinkvim/config.vim	/^        function! s:my_denite_file_rec_goroot() abort$/;"	f
+my_denite_outline	layers/+thinkvim/config.vim	/^        function! s:my_denite_outline(filetype) abort$/;"	f
+sa	layers/+thinkvim/config.vim	/^     nmap <silent> sa <Plug>(operator-sandwich-add)$/;"	m
+sa	layers/+thinkvim/config.vim	/^     omap <silent> sa <Plug>(operator-sandwich-g@)$/;"	m
+sd	layers/+thinkvim/config.vim	/^     nmap <silent> sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)$/;"	m
+sdb	layers/+thinkvim/config.vim	/^     nmap <silent> sdb <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)$/;"	m
+select_current_word	layers/+thinkvim/config.vim	/^        function! s:select_current_word()$/;"	f
+sj	layers/+thinkvim/config.vim	/^        nmap sj :SplitjoinJoin<CR>$/;"	m
+sk	layers/+thinkvim/config.vim	/^        nmap sk :SplitjoinSplit<CR>$/;"	m
+sr	layers/+thinkvim/config.vim	/^     nmap <silent> sr <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)$/;"	m
+srb	layers/+thinkvim/config.vim	/^     nmap <silent> srb <Plug>(operator-sandwich-replace)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-auto-a)$/;"	m
 w"	core/mappings.vim	/^vnoremap w" xa""<esc>hpl$/;"	m
 w'	core/mappings.vim	/^vnoremap w' xa''<esc>hpl$/;"	m
+zL	layers/+thinkvim/config.vim	/^        noremap zL :<C-u>call <SID>my_denite_decls(&filetype)<CR>$/;"	m
+zT	layers/+thinkvim/config.vim	/^        noremap zT :<C-u>call <SID>my_denite_file_rec_goroot()<CR>$/;"	m
+zl	layers/+thinkvim/config.vim	/^        noremap zl :<C-u>call <SID>my_denite_outline(&filetype)<CR>$/;"	m
 zz	core/mappings.vim	/^nnoremap <expr> zz (winline() == (winheight(0)+1) \/ 2) ?$/;"	m
+{{	layers/+thinkvim/config.vim	/^	nmap <buffer> {{ [%$/;"	m
+}}	layers/+thinkvim/config.vim	/^	nmap <buffer> }} ]%$/;"	m
