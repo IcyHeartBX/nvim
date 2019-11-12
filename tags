@@ -4,6 +4,8 @@
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+$FZF_DEFAULT_COMMAND	layers/+completion/fzf/config.vim	/^  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git\/*"'$/;"	v
+$FZF_DEFAULT_OPTS	layers/+completion/fzf/config.vim	/^let $FZF_DEFAULT_OPTS='--layout=reverse'$/;"	v
 ,	layers/+thinkvim/config.vim	/^    inoremap <expr> , smartchr#one_of(',', ',')$/;"	m
 ,<Space>	core/mappings.vim	/^nnoremap <silent> ,<Space> :<C-u>silent! keeppatterns %substitute\/\\s\\+$\/\/e<CR>$/;"	m
 -	layers/+thinkvim/config.vim	/^	nmap -         <Plug>(choosewin)$/;"	m
@@ -115,6 +117,9 @@
 <right>	core/mappings.vim	/^nnoremap <right> :vertical resize+5<CR>$/;"	m
 <up>	core/mappings.vim	/^nnoremap <up> :res +5<CR>$/;"	m
 BuffetSetCustomColors	layers/+ui/buffet/config.vim	/^function! g:BuffetSetCustomColors()$/;"	f
+Find	layers/+completion/fzf/config.vim	/^  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git\/*" --color "always" '.shellescape(<q-args>).'| tr -d "\\017"', 1, <bang>0)$/;"	c
+FloatingFZF	layers/+completion/fzf/config.vim	/^function! FloatingFZF()$/;"	f
+Fzf_dev	layers/+completion/fzf/config.vim	/^function! Fzf_dev()$/;"	f
 InitCaw	layers/+thinkvim/config.vim	/^    function! InitCaw() abort$/;"	f
 K	layers/+thinkvim/config.vim	/^        nnoremap <silent> K :call CocActionAsync('doHover')<CR>$/;"	m
 MyAutoCmd	core/general.vim	/^augroup MyAutoCmd$/;"	a
@@ -135,6 +140,7 @@ ab	layers/+thinkvim/config.vim	/^     omap ab <Plug>(textobj-sandwich-auto-a)$/;
 as	layers/+thinkvim/config.vim	/^     omap as <Plug>(textobj-sandwich-query-a)$/;"	m
 check_back_space	layers/+completion/coc/config.vim	/^function! s:check_back_space() abort$/;"	f
 check_custom_settings	autoload/etc.vim	/^function! s:check_custom_settings(filename)abort$/;"	f
+edit_file	layers/+completion/fzf/config.vim	/^  function! s:edit_file(items)$/;"	f
 etc#_parse_config_files	autoload/etc.vim	/^function! etc#_parse_config_files(config_paths) abort$/;"	f
 etc#init	autoload/etc.vim	/^function! etc#init() abort$/;"	f
 etc#providers#dein#_init	autoload/etc/providers/dein.vim	/^function! etc#providers#dein#_init(config_paths) abort$/;"	f
@@ -158,8 +164,18 @@ g:etc#cache_path	autoload/etc.vim	/^let g:etc#cache_path =$/;"	v
 g:etc#config_paths	autoload/etc.vim	/^let g:etc#config_paths = get(g:,'etc#config_paths',[$/;"	v
 g:etc#package_manager	autoload/etc.vim	/^let g:etc#package_manager = get(g:,'etc#package_manager','dein')$/;"	v
 g:etc#vim_path	autoload/etc.vim	/^let g:etc#vim_path =$/;"	v
+g:fzf_action	layers/+completion/fzf/config.vim	/^let g:fzf_action = {$/;"	v
+g:fzf_colors	layers/+completion/fzf/config.vim	/^let g:fzf_colors =$/;"	v
+g:fzf_commits_log_options	layers/+completion/fzf/config.vim	/^let g:fzf_commits_log_options = '--graph --color=always$/;"	v
+g:fzf_layout	layers/+completion/fzf/config.vim	/^let g:fzf_layout = { 'window': 'call FloatingFZF()' }$/;"	v
 g:splitjoin_join_mapping	layers/+thinkvim/config.vim	/^        let g:splitjoin_join_mapping = ''$/;"	v
 g:splitjoin_split_mapping	layers/+thinkvim/config.vim	/^        let g:splitjoin_split_mapping = ''$/;"	v
+g:which_key_localmap	layers/+tools/whichkey/config.vim	/^let g:which_key_localmap ={$/;"	v
+g:which_key_lsbgmap	layers/+tools/whichkey/config.vim	/^let g:which_key_lsbgmap = {$/;"	v
+g:which_key_map	layers/+tools/whichkey/config.vim	/^let g:which_key_map =  {}$/;"	v
+g:which_key_map	layers/+tools/whichkey/config.vim	/^let g:which_key_map = {$/;"	v
+g:which_key_map	layers/+tools/whichkey/config.vim	/^let g:which_key_map[' '] = {$/;"	v
+g:which_key_rsbgmap	layers/+tools/whichkey/config.vim	/^let g:which_key_rsbgmap = {$/;"	v
 g:yaml2json_method	autoload/etc/util.vim	/^let g:yaml2json_method = ''$/;"	v
 ga	layers/+thinkvim/config.vim	/^    nmap ga <Plug>(EasyAlign)$/;"	m
 gd	layers/+thinkvim/config.vim	/^        nmap <silent> gd <Plug>(coc-definition)$/;"	m
@@ -181,6 +197,13 @@ mg	layers/+thinkvim/config.vim	/^	nnoremap <silent> mg :Magit<CR>$/;"	m
 my_denite_decls	layers/+thinkvim/config.vim	/^        function! s:my_denite_decls(filetype) abort$/;"	f
 my_denite_file_rec_goroot	layers/+thinkvim/config.vim	/^        function! s:my_denite_file_rec_goroot() abort$/;"	f
 my_denite_outline	layers/+thinkvim/config.vim	/^        function! s:my_denite_outline(filetype) abort$/;"	f
+opts	layers/+completion/fzf/config.vim	/^  let opts = fzf#wrap({})$/;"	v
+opts	layers/+completion/fzf/config.vim	/^  let opts.options .= l:fzf_files_options$/;"	v
+opts	layers/+completion/fzf/config.vim	/^  let opts.source = <sid>files()$/;"	v
+opts	layers/+completion/fzf/config.vim	/^  let opts['sink*'] = function('s:edit_file')$/;"	v
+prepend_icon	layers/+completion/fzf/config.vim	/^  function! s:prepend_icon(candidates)$/;"	f
+s:Sink	layers/+completion/fzf/config.vim	/^  let s:Sink = opts['sink*']$/;"	v
+s:current_colorscheme	layers/+tools/whichkey/config.vim	/^let s:current_colorscheme = get(g:,"colors_name","")$/;"	v
 sa	layers/+thinkvim/config.vim	/^     nmap <silent> sa <Plug>(operator-sandwich-add)$/;"	m
 sa	layers/+thinkvim/config.vim	/^     omap <silent> sa <Plug>(operator-sandwich-g@)$/;"	m
 sd	layers/+thinkvim/config.vim	/^     nmap <silent> sd <Plug>(operator-sandwich-delete)<Plug>(operator-sandwich-release-count)<Plug>(textobj-sandwich-query-a)$/;"	m

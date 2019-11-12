@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =8
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/home/tangpengxiang/.config/nvim/layers/+tools/vim-gutentags'
 let g:netrw_dirhist_8='/home/tangpengxiang/.config/nvim/autoload/etc/providers'
 let g:netrw_dirhist_7='/home/tangpengxiang/.config/nvim/autoload/etc'
 let g:netrw_dirhist_6='/home/tangpengxiang/.config/nvim/autoload'
