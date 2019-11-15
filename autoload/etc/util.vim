@@ -132,3 +132,12 @@ function! etc#util#_test_python_yaml() abort
 	call system("python -c 'import sys,yaml,json'")
 	return (v:shell_error == 0) ? 1 : 0
 endfunction
+
+
+function! etc#util#ensure_directory(paths) abort
+	for l:path in etc#util#str2list(a:paths)
+		if ! isdirectory(l:path)
+			call mkdir(l:path, 'p')
+		endif
+	endfor
+endfunction

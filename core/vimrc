@@ -5,6 +5,7 @@ endif
 
 " 设置主要配置目录
 let $VIM_PATH=fnamemodify(resolve(expand('<sfile>:p')),':h:h')
+let s:user_settings_path = expand('~/.thinkvim.d/local_settings.vim')
 
 
 " 判断运行时目录，是否包含主要配置目录
@@ -52,6 +53,22 @@ if has('vim_starting')
     nnoremap ;        <Nop>
     xnoremap ;        <Nop>
 
+    if ! has('nvim') && has('pythonx')
+        if has('python3')
+            set pyxversion=3
+        elseif has('python')
+            set pyxversion=2
+        endif
+    endif
+
+    " Ensure data directories
+    call etc#util#ensure_directory([
+                \   g:etc#cache_path . '/undo',
+                \   g:etc#cache_path .'/backup',
+                \   g:etc#cache_path . '/session',
+                \   g:etc#vim_path . '/spell'
+                \ ])
+
 endif
 
 call etc#init()
@@ -60,5 +77,46 @@ call etc#util#source_file('core/general.vim')
 call etc#util#source_file('core/filetype.vim')
 call etc#util#source_file('core/mappings.vim')
 
+" Initialize user favorite colorscheme
+call theme#init()
+call etc#util#source_file('core/color.vim')
 
+function! s:check_custom_settings(filename)abort
+    let  content = readfile(a:filename)
+     if empty(content)
+        return 0
+    endif
+        return 1
+endfunction
 
+function! s:source_custom(path, ...)abort
+    let use_global = get(a:000, 0, !has('vim_starting'))
+    let abspath = resolve(expand('~/.thinkvim.d' . a:path))
+    if !use_global
+        execute 'source' fnameescape(abspath)
+        return
+    endif
+
+    " substitute all 'set' to 'setglobal'
+    let content = map(readfile(abspath),
+        \ 'substitute(v:val, "^\\W*\\zsset\\ze\\W", "setglobal", "")')
+    " create tempfile and source the tempfile
+     let tempfile = (tempname)
+     try
+        call writefile(content, tempfile)
+        execute 'source' fnameescape(tempfile)
+    finally
+        if filereadable(tempfile)
+            call delete(tempfile)
+        endif
+    endtry
+endfunction
+
+" load user custom local settings
+if filereadable(s:user_settings_path)
+    if s:check_custom_settings(s:user_settings_path)
+        call s:source_file('/local_settings.vim')
+    endif
+endif
+
+" vim: set ts=2 sw=2 tw=80 noet :
