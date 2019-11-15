@@ -169,3 +169,35 @@ if has('folding')
     set foldmethod=syntax
     set foldlevelstart=99
 endif
+
+" ===========常规设置==============
+set mouse=a
+" 支持256色
+set t_Co=256
+" Enable true color
+if has('termguicolors')
+    set termguicolors
+endif
+
+" 识别文件格式
+filetype on
+filetype indent on
+filetype plugin on
+" 设置自动切换目录
+set autochdir
+" 高亮行
+set cursorline
+" 设置标尺
+set ruler
+" 设置光标滚动到顶部和底部时保持5行距离
+set scrolloff=5
+" 有空格时不自动换行
+set textwidth=0
+" 自动换行
+set wrap
+" 命令模式自动补全
+set wildmenu
+set wildmode=longest:list,full
+
+" 光标的位置回到上次的地方
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")

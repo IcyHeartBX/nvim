@@ -14,6 +14,30 @@ endif
 
 let $DATA_PATH= g:etc#cache_path
 
+augroup MyAutoCmd
+    autocmd!
+    autocmd CursorHold *? syntax sync minlines=300
+augroup END
+
+" Disable vim distribution plugins
+let g:loaded_getscript = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_gzip = 1
+let g:loaded_logiPat = 1
+let g:loaded_matchit = 1
+let g:loaded_matchparen = 1
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+let g:loaded_rrhelper = 1  " ?
+let g:loaded_shada_plugin = 1  " ?
+let g:loaded_tar = 1
+let g:loaded_tarPlugin = 1
+let g:loaded_tutor_mode_plugin = 1
+let g:loaded_2html_plugin = 1
+let g:loaded_vimball = 1
+let g:loaded_vimballPlugin = 1
+let g:loaded_zip = 1
+let g:loaded_zipPlugin = 1"
+
 " 启动时执行
 if has('vim_starting')
     " 全局映射”
@@ -35,123 +59,6 @@ call etc#util#source_file('layers/+thinkvim/config.vim')
 call etc#util#source_file('core/general.vim')
 call etc#util#source_file('core/filetype.vim')
 call etc#util#source_file('core/mappings.vim')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-" ===========常规设置==============
-set mouse=a
-" 支持256色
-set t_Co=256
-" Enable true color
-if has('termguicolors')
-    set termguicolors
-endif
-
-" 打开高亮
-syntax on
-" 识别文件格式
-filetype on
-filetype indent on
-filetype plugin on
-" 设置折叠方式
-set foldmethod=marker
-set foldlevel=99
-" 设置自动切换目录
-set autochdir
-" 高亮行
-set cursorline
-" 浅色高亮当前行
-" autocmd InsertLeave * se nocul
-" autocmd InsertEnter * se cul
-" 设置标尺
-set ruler
-" 设置显示命令
-set showcmd
-" 设置光标滚动到顶部和底部时保持5行距离
-set scrolloff=5
-" 有空格时不自动换行
-set textwidth=0
-" 自动换行
-set wrap
-" 命令模式自动补全
-set wildmenu
-set wildmode=longest:list,full
-
-
-
-
-
-
-
-" ==========特殊设置===========
-" 光标的位置回到上次的地方
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$")
-" 光标的样式
-let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-let &t_EI = "\<Esc>]50;CursorShape=0\x7"
-" 自动插入文件头
-" 新建.c,.h,.sh,.java文件，自动插入文件头
-autocmd BufNewFile *.cpp,*.[ch],*.sh,*.java exec ":call SetTitle()"
-function! SetTitle()
-    "如果文件类型为.sh文件
-    if &filetype == 'sh'
-        call setline(1,"\#########################################################################")
-        call append(line("."), "\# File Name: ".expand("%"))
-        call append(line(".")+1, "\# Author: pix")
-        call append(line(".")+2, "\# mail: tpxsky@163.com")
-        call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-        call append(line(".")+4, "\#########################################################################")
-        call append(line(".")+5, "\#!/bin/bash")
-        call append(line(".")+6, "")
-    else
-        call setline(1, "/*************************************************************************")
-        call append(line("."), "    > File Name: ".expand("%"))
-        call append(line(".")+1, "    > Author: pix")
-        call append(line(".")+2, "    > Mail: tpxsky@163.com ")
-        call append(line(".")+3, "    > Created Time: ".strftime("%c"))
-        call append(line(".")+4, " ************************************************************************/")
-        call append(line(".")+5, "")
-    endif
-    if &filetype == 'cpp'
-        call append(line(".")+6, "#include<iostream>")
-        call append(line(".")+7, "using namespace std;")
-        call append(line(".")+8, "")
-    endif
-    if &filetype == 'c'
-        call append(line(".")+6, "#include<stdio.h>")
-        call append(line(".")+7, "")
-    endif
-    "新建文件后，自动定位到文件末尾
-    autocmd BufNewFile * normal G
-endfunc
 
 
 
